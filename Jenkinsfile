@@ -1,28 +1,24 @@
 pipeline {
     agent any
-   def mvnHome
+	
    stage('compile Stage') {
 	steps{
 	withMaven(maven : 'maven 3.3.9'){
-
 		sh 'mvn clean compile'
-
 	}
 	}      
    }
    stage('Testing Stage') {
 	steps{
 	withMaven(maven : 'maven 3.3.9'){
-
 		sh 'mvn test'
 
-	}
-	}      
+					}
+		}	      
    }
   stage('Deployment Stage') {
 	steps{
 	withMaven(maven : 'maven 3.3.9'){
-
 		sh 'mvn deploy'
 
 	}
